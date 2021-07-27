@@ -9,7 +9,7 @@ export default function Home (props) {
   return (
     <Fragment>
     <Helmet>
-      <title>HodlDice.Com</title>
+      <title>RiskDice.Com</title>
     </Helmet>
 <div className="panel panel-default mtl">
 	<div className="panel-body">
@@ -18,7 +18,7 @@ export default function Home (props) {
 			<div className="col-md-6 col-md-offset-1">
 				<ul className="list-group mtl">
 				  <li className="list-group-item"><i className="fa fa-check-circle mrs text-success" aria-hidden="true"></i> <b>Play instantly</b> <span className="pull-right hidden-xs">No registration required— deposit and start playing</span><span className="clearfix"></span></li>
-				  <li className="list-group-item"><i className="fa fa-check-circle mrs text-success" aria-hidden="true"></i> <b>Bet as low as 0.00001 $HODL</b><span className="pull-right hidden-xs">All bets are instant and off-the-chain</span><span className="clearfix"></span></li>
+				  <li className="list-group-item"><i className="fa fa-check-circle mrs text-success" aria-hidden="true"></i> <b>Bet as low as 0.00001 $RISK</b><span className="pull-right hidden-xs">All bets are instant and off-the-chain</span><span className="clearfix"></span></li>
 				  <li className="list-group-item"><i className="fa fa-check-circle mrs text-success" aria-hidden="true"></i> <b>Cryptographically verifiable</b> <span className="pull-right hidden-xs">Provably fair and guaranteed by cryptography</span><span className="clearfix"></span></li>
 				  <li className="list-group-item"><i className="fa fa-check-circle mrs text-success" aria-hidden="true"></i> <b>No blockchain spam</b> <span className="pull-right hidden-xs">We respect our beloved cryptocurrency</span><span className="clearfix"></span></li>
 				</ul>

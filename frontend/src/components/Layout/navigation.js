@@ -14,7 +14,7 @@ export default function Login (props) {
 	            <span className="icon-bar"></span>
 	            <span className="icon-bar"></span>
 	            </button>
-	            <Link to="/" className="navbar-brand"><b>HodlDice.com</b></Link>
+	            <Link to="/" className="navbar-brand"><b>RiskDice.com</b></Link>
 	        </div>
 	        <div className="navbar-collapse collapse" id="navbar">
 	            <ul className="nav navbar-nav navbar-right">

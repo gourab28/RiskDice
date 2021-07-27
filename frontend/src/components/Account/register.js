@@ -23,7 +23,7 @@ export default function Login (props) {
 			<div class="text-center">
 	        
 	        <br/>
-	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://hodldice.com/login</Link> <br/>using the following credentials:</b>
+	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://riskdice.com/login</Link> <br/>using the following credentials:</b>
 	        </div>
 	        <br/>
 
