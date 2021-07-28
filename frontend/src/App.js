@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react';
+import React,{Fragment , useState, useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -7,6 +7,7 @@ import {
 
 // CSS FILES
 import './App.css';
+import './dark.css';
 import './assets/css/toolkit.css';
 import './assets/css/application.css';
 // Layout Components
@@ -31,9 +32,12 @@ import Protected from './components/Protected';
 import Test from './components/test';
 
 function App() {
+  
+  
   return (
     <Fragment>
      <div className="container p-t-md">
+     
       <Router>
         <Navbar />
         <Switch>

@@ -292,7 +292,7 @@ const maxBet = () => {
               <div className="panel-body pbm">
                 <ul className="list-group mbs">
                   <li className="list-group-item pts pbs">
-                    <h4 className="man"><span className="pull-left">$HODL:</span> <span className="pull-right">{baldata.balance}</span></h4>
+                    <h4 className="man"><span className="pull-left">$RISK:</span> <span className="pull-right">{baldata.balance}</span></h4>
                     <div className="clearfix" />
                   </li>
                 </ul>

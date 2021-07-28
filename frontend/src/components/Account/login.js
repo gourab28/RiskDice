@@ -133,7 +133,7 @@ let history = useHistory();
        </div>
       </form>
       <div style={{marginBottom: "5px"}}>
-    <button onClick={getSignup} className="btn btn-secondary btn-block" type="submit"><b>Create Account</b></button>
+    <button onClick={getSignup} className="btn signup btn-block" type="submit"><b>Create Account</b></button>
     </div>
      </div>
     </div>

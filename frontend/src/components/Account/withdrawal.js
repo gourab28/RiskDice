@@ -71,9 +71,9 @@ useEffect(() => {
 		<div className="panel-body ptl pbl">
 			<div className="text-center">
 	        <br/>
-	        <b>Your balance ( <b>{baldata.balance}</b> ) $HODL.</b>
+	        <b>Your balance ( <b>{baldata.balance}</b> ) $RISK.</b>
 	        <br/>
-	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://hodldice.com/login</Link> <br/>using the following credentials:</b>
+	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://riskdice.com/login</Link> <br/>using the following credentials:</b>
 	        </div>
 	        <br/>
 	             <h5 style={{color: "green", textAlign: "center"}}> Withdrawal is {user .transactionStatus}</h5>
@@ -110,9 +110,9 @@ useEffect(() => {
 		<div className="panel-body ptl pbl">
 			<div className="text-center">
 	        <br/>
-	        <b>Your balance ( <b>{baldata.balance}</b> ) $HODL.</b>
+	        <b>Your balance ( <b>{baldata.balance}</b> ) $RISK.</b>
 	        <br/>
-	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://hodldice.com/login</Link> <br/>using the following credentials:</b>
+	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://riskdice.com/login</Link> <br/>using the following credentials:</b>
 	        </div>
 	        <br/>
 

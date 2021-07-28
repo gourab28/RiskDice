@@ -16,7 +16,7 @@ const [user, setUser] = useState();
       <Fragment>
       <div className="panel panel-default  panel-link-list">
         <div className="panel-body">
-           &copy; 2021 HodlDice.com
+           &copy; 2021 RiskDice.com
            <span className="pull-right">
 	          <Link to="/logout">Logout</Link>
 	          <Link to="/contact">Contact</Link>
@@ -30,7 +30,7 @@ const [user, setUser] = useState();
     <Fragment>
      	<div className="panel panel-default  panel-link-list">
         <div className="panel-body">
-           &copy; 2021 HodlDice.com
+           &copy; 2021 RiskDice.com
            <span className="pull-right">
 	          <Link to="/login">Login</Link>
 	          <Link to="!#">Contact</Link>

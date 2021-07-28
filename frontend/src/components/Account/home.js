@@ -53,9 +53,9 @@ export default function Account (props) {
 		<div class="panel-body ptl pbl">
 			<div class="text-center">
 	        <br/>
-	        <b>Your balance ( <b>{baldata.balance}</b> ) $HODL will be available next time you visit this website by means of a cookie.</b>
+	        <b>Your balance ( <b>{baldata.balance}</b> ) $RISK will be available next time you visit this website by means of a cookie.</b>
 	        <br/>
-	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://hodldice.com/login</Link> <br/>using the following credentials:</b>
+	        <b>If you would like to use your balance on another computer you may login at <Link to="/login">https://riskdice.com/login</Link> <br/>using the following credentials:</b>
 	        </div>
 	        <br/>
 
