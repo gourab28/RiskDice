@@ -31,10 +31,10 @@ export default function Login (props) {
           <div className="row">
         <div className="col-sm-3">
           <div className="list-group mtl">
-            <Link class="list-group-item" to="/account"><b><span class="icon icon-chevron-thin-right pull-right"></span>Account Information</b></Link>
-			<Link class="list-group-item" to="/deposit"><b><span class="icon icon-chevron-thin-right pull-right"></span> Deposit</b></Link>
-			<Link class="list-group-item" to="/withdraw"><b><span class="icon icon-chevron-thin-right pull-right"></span> Withdraw</b></Link>
-			<Link class="list-group-item active" to="/history"><b><span class="icon icon-chevron-thin-right pull-right"></span> Bet History</b></Link>
+            <Link className="list-group-item" to="/account"><b><span className="icon icon-chevron-thin-right pull-right"></span>Account Information</b></Link>
+			<Link className="list-group-item" to="/deposit"><b><span className="icon icon-chevron-thin-right pull-right"></span> Deposit</b></Link>
+			<Link className="list-group-item" to="/withdraw"><b><span className="icon icon-chevron-thin-right pull-right"></span> Withdraw</b></Link>
+			<Link className="list-group-item active" to="/history"><b><span className="icon icon-chevron-thin-right pull-right"></span> Bet History</b></Link>
           </div>
         </div>
         <div className="col-sm-9">
@@ -42,9 +42,9 @@ export default function Login (props) {
             <div className="panel-heading text-center"><b>Bet History</b></div>
             <div className="panel-body ptl pbl">
               <div className="text-center">
-                        <table className="table table-bordered table-condensed text-center">
+                        <table className="table table-bordered table-condensed dark-text text-center">
             <thead>
-              <tr>
+              <tr className="dark-text">
                 <th className="active text-center"><b>BET ID</b></th>
                 <th className="active text-center"><b>When</b></th>
                 <th className="active col-sm-1 text-center"><b>Lucky</b></th>
@@ -82,7 +82,7 @@ export default function Login (props) {
     )
   } else {
     return (
-      <div class="row text-center">
+      <div className="row text-center">
         <h5>Loading ....</h5>
       </div>
   )

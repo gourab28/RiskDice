@@ -1,0 +1,182 @@
+.dark {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1e3948;
+  /*background-color: #f5f8fa;*/
+  background-color: #000;
+}
+.dark h1 {
+  color: #fff;
+}
+
+.dark .panel-body {
+  background-color: #000;
+  color: #fff;
+}
+.dark .panel .panel-default .panel-heading .panel-title {
+  background-color: #000;
+  color: #fff;
+}
+.dark .list-group-item {
+  background-color: #000;
+  color: #fff;
+}
+.dark .panel-heading {
+  background-color: #000;
+  color: #fff;
+}
+.dark .panel .panel-default .panel-heading {
+  background-color: #000;
+  color: #fff;
+}
+.dark .panel .panel-default .mtl .panel-heading .text-center .panel-title {
+  background-color: #000;
+  color: #fff;
+}
+.dark nav {
+  background-color: #000;
+  color: #fff;
+}
+.dark .navbar .navbar-default .app-navbar .navbar-brand {
+  color : #fff;
+}
+
+.dark input {
+  background-color: #000;
+  color: #fff;
+}
+.dark .btn {
+  background-color: #000;
+  color: #fff;
+}
+.dark .signup {
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #4CAF50;
+}
+.dark .dark-text {
+  background-color: #000;
+  color: #fff;
+}
+.dark .panel-heading {
+  background-color: #000;
+  color: #fff;
+}
+.dark div {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark .col-sm-12 .panel .panel-default .panel-heading {
+  background-color: #000;
+  color: #fff;
+}
+.dark .active {
+  background-color: #000;
+  color: #fff;
+}
+.dark table .table .table-bordered .table-condensed .text-center {
+  
+}
+.dark table {
+    background-color: #000;
+    color: #fff;
+  }
+  .dark th {
+    background-color: #000;
+    color: #fff;
+  }
+  .dark td {
+    background-color: #000;
+    color: #fff;
+  }
+  .dark .col-sm-1 {
+    background-color: #000;
+    color: #fff;
+  }
+  .dark .active {
+    background-color: #fff;
+  }
+  .dark .text-center {
+    background-color: #000;
+    color: #fff;
+  }
+.dark .table > thead > tr > td.active,
+.dark .table > tbody > tr > td.active,
+.dark .table > tfoot > tr > td.active,
+.dark .table > thead > tr > th.active,
+.dark .table > tbody > tr > th.active,
+.dark .table > tfoot > tr > th.active,
+.dark .table > thead > tr.active > td,
+.dark .table > tbody > tr.active > td,
+.dark .table > tfoot > tr.active > td,
+.dark .table > thead > tr.active > th,
+.dark .table > tbody > tr.active > th,
+.dark .table > tfoot > tr.active > th {
+  background-color: #f5f5f5;
+}
+.dark div {
+  background: #000;
+    color: #fff;
+}
+.dark div {
+  background-image: #000;
+    color: #fff;
+}
+.dark .row {
+ background-color: #000;
+    color: #fff;
+}
+.dark .list-group {
+  background-color: #000;
+    color: #fff;
+}
+.dark .panel-body .ptl .pbl table {
+  background-color: #000;
+    color: #fff;
+}
+.dark .panel-heading .text-center b {
+  background-color: #000;
+    color: #fff;
+}
+.panel-default {
+  border-color: #d3e0e9;
+}
+.dark > .panel-default > .panel-heading {
+  color: #1e3948;
+  background-color: black;
+  border-color: #d3e0e9;
+}
+.dark > .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #d3e0e9;
+}
+.dark > .panel-default > .panel-heading .badge {
+  color: #f5f5f5;
+  background-color: #1e3948;
+}
+.dark > .panel-default > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #d3e0e9;
+}
+.dark a::hover,
+.dark a::active {
+  background-color: #000;
+    color: #fff;
+    text-decoration: none;
+}
+.dark .table .table-condensed .text-center .table-responsive thead {
+  background-color: #000;
+    color: #fff;
+}
+.dark .panel-headingl {
+  background-color: transparent;
+}
+.dark .panel-default {
+  background-color: #000;
+}
+.dark .panel {
+  background-color: #000;
+}
+.dark .mtl {
+  background-color: #000;
+}
