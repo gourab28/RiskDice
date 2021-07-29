@@ -101,9 +101,9 @@ let history = useHistory();
   // if there's no user, show the login form
   return (
     <div className="panel panel-default mtl">
-    	<div className="panel-heading">
-    	 <h3 className="text-center panel-title">Login</h3>
-      </div>
+    	 <div className="panel-heading text-center">
+    	     <b>Login</b>
+    	  </div>
     <div className="panel-body">
     	<div className="row">
        <div className="col-md-4 col-md-offset-4 ptl pbl">
