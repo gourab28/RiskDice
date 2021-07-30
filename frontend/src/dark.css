@@ -173,26 +173,33 @@
 }
 .dark .panel-default {
   background-color: #000;
+  color: #fff;
 }
 .dark .panel {
   background-color: #000;
+  color: #fff;
 }
 .dark .mtl {
   background-color: #000;
+  color: #fff;
 }
 .dark .panel {
   background-color: #000;
+  color: #fff;
 }
 
 .dark .panel-heading {
   background-color: #000;
+  color: #fff;
 }
 .dark .panel-default {
   background-color: #000;
+  color: #fff;
 }
 .dark h3 {
   background-color: transparent;
 }
 .dark li:hover {
   background-color: #000;
+  color: #fff;
 }

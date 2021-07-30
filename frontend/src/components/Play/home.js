@@ -185,7 +185,10 @@ const maxBet = () => {
      // Total Loss Count
     let tloss = baldata.betHistory.filter(item => item.betLucky === false);
    let lossl = tloss.length;
-     
+   
+   let historyData = baldata.betHistory;
+   const sortData = historyData;
+
   //Balance Formatting
   //let resBetid = baldata.betHistory.betID;
   return (
@@ -343,7 +346,7 @@ const maxBet = () => {
               </tr>
             </thead>
             <tbody id="history">
-           {baldata.betHistory.map((value, index) => {
+           {sortData.slice().reverse().map((value, index) => {
            
         return(
             <tr>
