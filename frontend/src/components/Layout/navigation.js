@@ -1,6 +1,8 @@
 import React, {useState, Fragment, useEffect} from "react";
 import DarkModeToggle from "react-dark-mode-toggle";
-
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 import {Link} from 'react-router-dom';
 
 export default function Login (props) {
@@ -44,12 +46,14 @@ export default function Login (props) {
 	                <li><Link to="/account">Account</Link></li>
 	                <li><Link to="/faq">FAQ</Link></li>
 	                <li><Link to="/verification">Verification</Link></li>
-	                <li><Link to="/stats">Stats</Link></li>
-	                <DarkModeToggle
+	                <li>
+	                <Switch checked={darkMode} onClick={() => setDarkMode(!darkMode)} name="checkedA" />
+	               {/* <DarkModeToggle
 	                 onChange={setDarkMode}
 	                 className="dark-btn"
 	                 checked={darkMode}
-	                 size={35} />
+	                 size={35} /> */}
+	                </li>
 	            </ul>
 	        </div>
 	    </div>

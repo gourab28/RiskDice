@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import Clipboard from 'react-clipboard.js';
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -25,10 +25,10 @@ let history = useHistory();
     setPassword("");
     localStorage.clear();
   }; */}
-  const continueLogin = () => {
+ /* const continueLogin = () => {
     setReg();
-  }
- console.warn(user);
+  } */
+// console.warn(user);
   // login the user
   const handleSubmit = async e => {
     try {
@@ -50,10 +50,6 @@ let history = useHistory();
   }
   };
   
-  const getSignup = async()=> {
-    const res = await axios('http://localhost:5000/api/');
-     setReg(res.data)
-  };
  console.log(error);
   // if there's a user show the message below
   if (user) {
@@ -65,39 +61,6 @@ let history = useHistory();
     );
   }
  
- else if (reg) {
-   return (
-     <>
-           <div className="col-sm-12">
-        <div className="panel panel-default mtl">
-          <div className="panel-heading text-center"><b>Registration Information</b></div>
-          <div className="panel-body ptl pbl">
-            <div className="text-center">
-              <div className="row mtm mbl">
-                <div className="col-md-6 col-md-offset-3"> 
-                 <ul className="list-group mbs">
-                 <li className="list-group-item"><b>User ID:</b><span className="wordbrk"> {reg.userID} <Clipboard className="clipb pull-right user" data-clipboard-text={reg.userID}><i class="far fa-clipboard"></i></Clipboard></span></li>
-                 <li className="list-group-item"><b>Password:</b><span className="wordbrk"> {reg.password} <Clipboard className="clipb pull-right user" data-clipboard-text={reg.password}><i class="far fa-clipboard"></i></Clipboard></span></li>
-			            <li className="list-group-item"><b>Depsit Address:</b><span className="wordbrk"> {reg.account_address} <Clipboard className="clipb pull-right user" data-clipboard-text={reg.account_address}><i class="far fa-clipboard"></i></Clipboard></span></li>
-
-			        </ul>
-                </div>
-              </div>
-       <div className="form-group">
-        <button onClick={continueLogin} className="btn btn-primary btn-block" type="submit">Continue Login</button>
-       </div>
-              <small><center><b>Note:</b> Accounts are created only after the first deposit!</center></small>
-              <div className="text-center">
-                <hr className="mbl mts" />
-                <small><b className="text-danger">Warning:</b> Make sure you save your login credential. If you deleted your cookies and/or forgot your User ID and/or Password and since we do not require <br /> an email address, password reset is not automated. Use the contact link at the bottom of the page. You will need to prove that you own one of the <br /> originating addresses of your first deposit. </small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-     </>
-     )
- }
   // if there's no user, show the login form
   return (
     <div className="panel panel-default mtl">
@@ -133,7 +96,8 @@ let history = useHistory();
        </div>
       </form>
       <div style={{marginBottom: "5px"}}>
-    <button onClick={getSignup} className="btn signup btn-block" type="submit"><b>Create Account</b></button>
+      <Link to="/register">
+    <button className="btn signup btn-block" type="submit"><b>Create Account</b></button> </Link>
     </div>
      </div>
     </div>

@@ -54,7 +54,7 @@ export default function Login (props) {
               </tr>
             </thead>
             <tbody id="history">
-           {baldata.betHistory.map((value, index) => {
+           {baldata.betHistory.slice().reverse().map((value, index) => {
         return(
             <tr>
               <th className="betid">{value.betID.substring(20)}</th>

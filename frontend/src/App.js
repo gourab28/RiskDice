@@ -16,6 +16,7 @@ import Footer from './components/Layout/footer';
 // Page Components
 import Home from './components/HomePage/home';
 import Login from './components/Account/login';
+import Signup from './components/Account/signup';
 import Register from './components/Account/register';
 import History from './components/Account/history';
 import Logout from './components/Account/logout';
@@ -29,7 +30,6 @@ import Faq from './components/FAQ/home';
 import Stats from './components/Stats/home';
 //Login Protected
 import Protected from './components/Protected';
-import Test from './components/test';
 
 function App() {
   
@@ -43,7 +43,7 @@ function App() {
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path="/register" component={Signup} />
             <Route path="/logout" component={Logout} />
             <Protected path="/verification" component={Verification} />
             <Protected path="/account" component={AccountHome} />
