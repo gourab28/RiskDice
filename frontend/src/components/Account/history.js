@@ -1,33 +1,36 @@
-import React, {Fragment, useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import axios from 'axios'; 
+import React, {useEffect, Fragment} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {getHistory} from '../../store/actions/historyAction';
 import Tippy from '@tippy.js/react';
-export default function Login (props) {
-    // User Information
-  let Udata = localStorage.getItem("user");
-  let obj = JSON.parse(Udata);
-  const [data] = useState(obj);
-  const [baldata, setBaldata] = useState();
-  
-  useEffect(() => {
-    // POST request using axios inside useEffect React hook
-    const userd = { "userID": data.userID, "password": data.password };
-    axios.post('http://localhost:5000/api/login', userd)
-        .then(response => setBaldata(response.data));
-    // console.log(baldata);
-  },1000);
-  
-  function getNumber (num) {
+import {Link} from 'react-router-dom';
+
+const BetHistory = () => {
+    const dispatch = useDispatch()
+    const betList = useSelector(state => state.betList)
+    const {loading, error, list} = betList
+    useEffect(() => {
+        dispatch(getHistory()) 
+      }, [dispatch])
+  {/* function getNumber (num) {
     
     var units = ["M","B","T","Q"]
     var unit = Math.floor((num / 1.0e+1).toFixed(0).toString().length)
     var r = unit%3
     var x =  Math.abs(Number(num))/Number('1.0e+'+(unit-r)).toFixed(2)
     return x.toFixed(2)+ ' ' + units[Math.floor(unit / 3) - 2]
+} */}
+function numFormatter(num) {
+    if(num > 999 && num < 1000000){
+        return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million 
+    }else if(num > 1000000){
+        return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
+    }else if(num < 900){
+        return num; // if value < 1000, nothing to do
+    }
 }
-  if (baldata) {
-  return (
-    <Fragment>
+    return (
+  <Fragment>
+   {loading ? "Loading..." : betList.list.length === 0 ? "No Data available" : <Fragment>
           <div className="row">
         <div className="col-sm-3">
           <div className="list-group mtl">
@@ -54,7 +57,7 @@ export default function Login (props) {
               </tr>
             </thead>
             <tbody id="history">
-           {baldata.betHistory.slice().reverse().map((value, index) => {
+           {betList.list.slice().reverse().map((value, index) => {
         return(
             <tr>
               <th className="betid">{value.betID.substring(20)}</th>
@@ -65,7 +68,7 @@ export default function Login (props) {
                      )}</td>
               <td>
              <Tippy content={value.betAmount}>
-              <a>{getNumber(value.betAmount).replace("0.00 undefined", (value.betAmount))}</a>
+              <a>{numFormatter(value.betAmount)}</a>
              </Tippy>
               </td>
               <td>{value.multiplier}</td>
@@ -78,13 +81,9 @@ export default function Login (props) {
             </div>
           </div>
         </div></div>
-    </Fragment>
+    </Fragment>}
+        </Fragment>
     )
-  } else {
-    return (
-      <div className="row text-center">
-        <h5>Loading ....</h5>
-      </div>
-  )
-  }
 }
+
+export default BetHistory
