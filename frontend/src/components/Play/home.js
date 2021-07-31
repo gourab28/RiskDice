@@ -18,33 +18,32 @@ export default function PlayGame (props) {
   let Udata = localStorage.getItem("user");
   let obj = JSON.parse(Udata);
   const [data] = useState(obj);
-  const [baldata, setBaldata] = useState();
-  const [balupdate, setBalupdate] = useState();
-  
+  const [baldata, setBaldata] = useState();  
  //Counting 
   
  let diceV = betresponse.diceValue;
 //First Load
-{/* useEffect(() => {
-  const userd = { "userID": data.userID, "password": data.password };
-    axios.post('http://localhost:5000/api/login', userd)
-        .then(response => setBalupdate(response.data.balance));
-},) */}
 useEffect(() => {
     // POST request using axios inside useEffect React hook
     const userd = { "userID": data.userID, "password": data.password };
     axios.post('http://localhost:5000/api/login', userd)
         .then(response => setBaldata(response.data));
     // console.log(baldata);
-  },);
-  /// Load
-useEffect(() => {
-  getMaxwin();
+
+    getMaxwin();
   odds();
   multiplier();
   maxBet();
   lessVal();
-});
+  },[]);
+
+  const refresh = async () => {
+    // POST request using axios inside useEffect React hook
+    const userd = { "userID": data.userID, "password": data.password };
+    axios.post('http://localhost:5000/api/login', userd)
+        .then(response => setBaldata(response.data));
+    // console.log(baldata);
+  }
 
 function getNumber (num) {
     
@@ -149,6 +148,7 @@ const maxBet = () => {
    const handleSubmit = async e => {
     try {
     e.preventDefault();
+    refresh();
     const user = { "lessThanAmount": less , "userID": data.userID, "password": data.password, "betAmount": betamt };
     // send the username and password to the servertry {
     const response = await axios.post(
@@ -336,12 +336,11 @@ const maxBet = () => {
           <table className="table table-bordered table-condensed text-center">
             <thead>
               <tr>
-                <th className="active text-center"><b>BET ID</b></th>
+                {/* <th className="active text-center"><b>BET ID</b></th> */}
                 <th className="active text-center"><b>When</b></th>
-                <th className="active col-sm-1 text-center"><b>Lucky</b></th>
-                {/*<th className="active col-sm-1 text-center"><b>Target</b></th> */}
-                <th className="active col-sm-2 text-center"><b>Bet</b></th>
-                <th className="active col-sm-1 text-center"><b>Multiplier</b></th>
+                <th className="active text-center"><b>Lucky</b></th>
+                <th className="active text-center"><b>Bet</b></th>
+                <th className="active text-center"><b>Multiplier</b></th>
                 
               </tr>
             </thead>
@@ -350,9 +349,9 @@ const maxBet = () => {
            
         return(
             <tr>
-              <th 
+              {/* <th 
               style={{textAlign: 'center'}}
-              className="betid">{value.betID.substring(20)}</th>
+              className="betid">{value.betID.substring(20)}</th> */}
               <td>{value.betTime}</td>
               <td>{value.betLucky === true ? (
               <p><b className="text-success">Win</b></p> ) : (
