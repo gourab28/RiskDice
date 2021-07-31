@@ -1,13 +1,14 @@
-import React, {Fragment , useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Fragment, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import Tippy from '@tippy.js/react';
 import mathSum from 'math-sum';
 import HTable from './table';
-export default function PlayGame (props) {
+
+export default function PlayGame(props) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [less , setLess] = useState("32440");
-  const [odd , setOdd] = useState("");
+  const [less, setLess] = useState("32440");
+  const [odd, setOdd] = useState("");
   const [multip, setMultip] = useState("");
   const [max, setMax] = useState("");
   const [maxwin, setMaxwin] = useState("");
@@ -18,114 +19,123 @@ export default function PlayGame (props) {
   let Udata = localStorage.getItem("user");
   let obj = JSON.parse(Udata);
   const [data] = useState(obj);
-  const [baldata, setBaldata] = useState();  
- //Counting 
-  
- let diceV = betresponse.diceValue;
- 
-//First Load
-useEffect(() => {
-      // POST request using axios inside useEffect React hook
+  const [baldata, setBaldata] = useState();
+  //Counting 
+
+  let diceV = betresponse.diceValue;
+
+  //First Load
+  useEffect(() => {
+    // POST request using axios inside useEffect React hook
     const userd = { "userID": data.userID, "password": data.password };
     axios.post('http://localhost:5000/api/login', userd)
-        .then(response => setBaldata(response.data));
+      .then(response => setBaldata(response.data));
     // console.log(baldata);
-
-},[])
-useEffect(() => {
-  getMaxwin();
-  odds();
-  multiplier();
-  maxBet();
-  lessVal();
-  },);
+    getMaxwin();
+    odds();
+    multiplier();
+    maxBet();
+    lessVal();
+    window.addEventListener('keydown', (event) => {
+      console.log("key was pressed: ", event);
+      if (event.key === "A" || event.key === "a") { //Min
+        minBet();
+        console.log("A was called");
+      } else if (event.key === "S" || event.key === "s") { // /2
+        halfBet();
+        console.log("S was called");
+      } else if (event.key === "D" || event.key === "d") {
+        dobBet();
+        console.log("D was called");
+      } else if (event.key === "F" || event.key === "f") {
+        maxxBet();
+        console.log("F was called");
+      } else if (event.key === "L" || event.key === "l") {
+        handleSubmit();
+        console.log("L was called");
+      }
+    });
+  }, []);
 
   const refresh = async () => {
     // POST request using axios inside useEffect React hook
     const userd = { "userID": data.userID, "password": data.password };
     axios.post('http://localhost:5000/api/login', userd)
-        .then(response => setBaldata(response.data));
+      .then(response => setBaldata(response.data));
     // console.log(baldata);
   }
 
-function getNumber (num) {
-    
-    var units = ["M","B","T","Q"]
-    var unit = Math.floor((num / 1.0e+1).toFixed(0).toString().length)
-    var r = unit%3
-    var x =  Math.abs(Number(num))/Number('1.0e+'+(unit-r)).toFixed(2)
-    return x.toFixed(2)+ ' ' + units[Math.floor(unit / 3) - 2]
-}
+  function getNumber(num) {
 
-function formatNUM (n)  {
+    var units = ["M", "B", "T", "Q"]
+    var unit = Math.floor((num / 1.0e+1).toFixed(0).toString().length)
+    var r = unit % 3
+    var x = Math.abs(Number(num)) / Number('1.0e+' + (unit - r)).toFixed(2)
+    return x.toFixed(2) + ' ' + units[Math.floor(unit / 3) - 2]
+  }
+
+  function formatNUM(n) {
     let dotPos, i, len, num, _i;
     num = (n / 1e8).toFixed(7);
     if (dotPos = num.indexOf(".")) {
-        len = num.length - 1;
-        for (i = _i = len; len <= 0 ? _i <= 0 : _i >= 0; i = len <= 0 ? ++_i : --_i) {
-            if (num[i] !== "0") {
-                if (i - dotPos <= 2) {
-                    return num.substr(0, 3 + dotPos)
-                } else {
-                    return num.substr(0, i + 1);
-                }
-            }
+      len = num.length - 1;
+      for (i = _i = len; len <= 0 ? _i <= 0 : _i >= 0; i = len <= 0 ? ++_i : --_i) {
+        if (num[i] !== "0") {
+          if (i - dotPos <= 2) {
+            return num.substr(0, 3 + dotPos)
+          } else {
+            return num.substr(0, i + 1);
+          }
         }
+      }
     } else {
-        return num;
+      return num;
     }
-}
-
-// Validation
-const lessVal = () => {
-  if(less < 1) {
-    setLess("1");
-  } else if(less > 64000) {
-    setLess("64000");
   }
-}
+
+  // Validation
+  const lessVal = () => {
+    if (less < 1) {
+      setLess("1");
+    } else if (less > 64000) {
+      setLess("64000");
+    }
+  }
 
 
-function sigDigits(n, sig) {
-  let mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.LN10) - 1);
+  function sigDigits(n, sig) {
+    let mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.LN10) - 1);
     return Math.floor(n * mult) / mult;
-} 
+  }
 
-// getMaxwin
+  // getMaxwin
+  const getMaxwin = () => {
+    setMaxwin("20000000000");
+  }
 
-const getMaxwin = () => {
-  setMaxwin("20000000000");
-}
-
-//Max Bet 
-const maxBet = () => {
-  let max = maxwin / multip;
- let respn = Math.round(sigDigits(max, 2));
-  let numbet = formatNUM((respn));
-  setMax(numbet);
-}
-// Odds Calculation
+  //Max Bet 
+  const maxBet = () => {
+    let max = maxwin / multip;
+    let respn = Math.round(sigDigits(max, 2));
+    let numbet = formatNUM((respn));
+    setMax(numbet);
+  }
+  // Odds Calculation
   const odds = () => {
     let res = (less / 65536 * 100).toPrecision(3);
-   // let oddsf = formatNUM(res);
+    // let oddsf = formatNUM(res);
     setOdd(res);
   }
- // multiplier Calculation
+  // multiplier Calculation
   const multiplier = () => {
-    let multi   = sigDigits(65536 / less * .99, 5);
+    let multi = sigDigits(65536 / less * .99, 5);
     setMultip(multi);
   }
-  //console.log(data);
-  //mAx
-// const cMax = () => {
- //  let game = less;
-  // let bala = data.balance * 1;
-   
- //}
+
   const dobBet = () => {
     if (betamt.length === 0) {
-       setBetamt("0.0000100");
-     } else {
+      setBetamt("0.0000100");
+    } else {
       let doubled = betamt * 2;
       setBetamt(doubled.toFixed(7));
     }
@@ -135,73 +145,71 @@ const maxBet = () => {
   }
   const halfBet = () => {
     if (betamt.length === 0) {
-       setBetamt("0.0000100");
-     } else {
+      setBetamt("0.0000100");
+    } else {
       let doubled = betamt / 2;
       setBetamt(doubled.toFixed(7));
     }
   }
-  
+
   const maxxBet = () => {
     let balance = baldata.balance;
-    let balan =  balance * 1;
+    let balan = balance * 1;
     setBetamt(balan.toFixed(7));
   }
+
   // Bet Request to api
-   const handleSubmit = async e => {
+  const handleSubmit = async e => {
+    window.location.reload(false);
     try {
       e.preventDefault();
       refresh();
-      if(betamt === "" || 0){
+      if (betamt === "" || 0) {
         setError("Cannot place empty bets");
       } else {
         setError("");
-        const user = { "lessThanAmount": less , "userID": data.userID, "password": data.password, "betAmount": betamt };
+        const user = { "lessThanAmount": less, "userID": data.userID, "password": data.password, "betAmount": betamt };
         // send the username and password to the servertry {
         const response = await axios.post(
           "http://localhost:5000/api/makeBet",
           user
         );
         // set the state of the user
-        await setIsLoaded(true);
+        setIsLoaded(true);
         setBetresponse(response.data);
       }
       //Error Response
     } catch (err) {
-     setError("Insufficient account balance for making bet.");
+      setError("Insufficient account balance for making bet.");
+    }
   }
-  //console.log(error)
-  await window.location.reload(false);
-   }
+
   if (baldata) {
-     
-   //console.log(result);
-   
-     //Validation
-      const betamtVal = () => {
-        if(betamt < 0.0000000) {
-          setBetamt("");
-          } else if(betamt > baldata.balance) {
-            setBetamt(baldata.balance);
-            }
+    //Validation
+    const betamtVal = () => {
+      if (betamt < 0.0000000) {
+        setBetamt("");
+      } else if (betamt > baldata.balance) {
+        setBetamt(baldata.balance);
       }
-     // Total Bet
-      let totalBet = baldata.betHistory.length;
+    }
+    // Total Bet
+    let totalBet = baldata.betHistory.length;
     //Total 
     let twin = baldata.betHistory.filter(item => item.betLucky === true);
     let twinl = twin.length;
-     // Total Loss Count
+    // Total Loss Count
     let tloss = baldata.betHistory.filter(item => item.betLucky === false);
-   let lossl = tloss.length;
-   
-   let historyData = baldata.betHistory;
-   const sortData = historyData;
+    let lossl = tloss.length;
 
-  //Balance Formatting
-  //let resBetid = baldata.betHistory.betID;
-  return (
-    <Fragment>
-     <div className="row  mtl mbs">
+    let historyData = baldata.betHistory;
+    const sortData = historyData;
+
+    //Balance Formatting
+    //let resBetid = baldata.betHistory.betID;
+    return (
+      <Fragment>
+        <div className="row  mtl mbs">
           <div className="col-sm-9">
             <div className="panel panel-default mbn">
               <div className="panel-body">
@@ -212,30 +220,30 @@ const maxBet = () => {
                         <div className="form-group">
                           <div className="input-group">
                             <span className="input-group-addon">Less Than</span>
-                       <input type="tel" className="form-control text-center"
-                       onChange={event => setLess(event.target.value)}
-                       onClick={odds}
-                       value={less}
-                       />
+                            <input type="tel" className="form-control text-center"
+                              onChange={event => setLess(event.target.value)}
+                              onClick={odds}
+                              value={less}
+                            />
                             <div className="input-group-btn">
                               <button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options <span className="caret" /></button>
                               <ul className="dropdown-menu dropdown-menu-right bet oppv">
-                              <li
-                                onClick={event => setLess("60000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 60000 &nbsp; 91.6% &nbsp; 1.0813x &nbsp;&nbsp;&nbsp;</li>
-                             <li
-                                onClick={event => setLess("55000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 55000 &nbsp; 83.9%  &nbsp; 1.1796x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("32768")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 32768 &nbsp; 50.0% &nbsp; 1.98x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("60000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 60000 &nbsp; 91.6% &nbsp; 1.0813x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("16384")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 16384 &nbsp; 25.0% &nbsp; 3.96x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("55000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 55000 &nbsp; 83.9%  &nbsp; 1.1796x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("7000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 7000 &nbsp; 10.7% &nbsp; 9.2686x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("32768")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 32768 &nbsp; 50.0% &nbsp; 1.98x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("2400")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 2400 &nbsp; 3.66% &nbsp; 27.033x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("16384")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 16384 &nbsp; 25.0% &nbsp; 3.96x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("1000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 1000 &nbsp; 1.53% &nbsp; 64.88x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("7000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 7000 &nbsp; 10.7% &nbsp; 9.2686x &nbsp;&nbsp;&nbsp;</li>
                                 <li
-                                onClick={event => setLess("1")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 1 &nbsp; 0.00153% &nbsp; 64880x &nbsp;&nbsp;&nbsp;</li>
+                                  onClick={event => setLess("2400")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 2400 &nbsp; 3.66% &nbsp; 27.033x &nbsp;&nbsp;&nbsp;</li>
+                                <li
+                                  onClick={event => setLess("1000")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 1000 &nbsp; 1.53% &nbsp; 64.88x &nbsp;&nbsp;&nbsp;</li>
+                                <li
+                                  onClick={event => setLess("1")}>&nbsp;&nbsp;&nbsp; {"<"} &nbsp; 1 &nbsp; 0.00153% &nbsp; 64880x &nbsp;&nbsp;&nbsp;</li>
                               </ul>
                             </div>
                           </div>
@@ -272,13 +280,13 @@ const maxBet = () => {
                         <div className="form-group has-success">
                           <div className="input-group">
                             <span className="input-group-addon">Bet</span><input type="tel" className="form-control text-right" placeholder="0.00000000"
-                       value={betamt}
-                       onChange={event => {setBetamt(event.target.value); betamtVal()}}
-                       />
+                              value={betamt}
+                              onChange={event => { setBetamt(event.target.value); betamtVal() }}
+                            />
                           </div>
                         </div>
                       </div>
-                   
+
                       <div className="col-sm-5">
                         <p onClick={handleSubmit} className="btn btn-success btn-block">Roll &nbsp;<b className="text-info">L</b></p>
                       </div>
@@ -316,8 +324,8 @@ const maxBet = () => {
             </div>
           </div>
         </div>
-         <p className="text-danger"
-                      style={{textAlign: "center"}}><b>{error}</b></p>
+        <p className="text-danger"
+          style={{ textAlign: "center" }}><b>{error}</b></p>
         <div className="row">
           <div className="col-sm-3">
             <ul className="list-group mbs">
@@ -340,14 +348,15 @@ const maxBet = () => {
             </ul>
           </div>
         </div>
-       <HTable />
-    </Fragment>
-    ) }
-    return (
-      <Fragment>
+        <HTable />
+      </Fragment>
+    )
+  }
+  return (
+    <Fragment>
       <div className="row text-center">
         <div className="line-2"></div>
       </div>
     </Fragment>
-      )
+  )
 }

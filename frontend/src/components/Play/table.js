@@ -31,10 +31,9 @@ export default function Table(props) {
               <tr>
               {/*  <th className="active text-center"><b>BET ID</b></th> */}
                 <th className="active text-center"><b>When</b></th>
-                <th className="active col-sm-1 text-center"><b>Lucky</b></th>
-                {/*<th className="active col-sm-1 text-center"><b>Target</b></th> */}
-                <th className="active col-sm-2 text-center"><b>Bet</b></th>
-                <th className="active col-sm-1 text-center"><b>Multiplier</b></th>
+                <th className="active text-center"><b>Lucky</b></th>
+                <th className="active text-center"><b>Bet</b></th>
+                <th className="active text-center"><b>Multiplier</b></th>
                 
               </tr>
             </thead>

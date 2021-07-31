@@ -6,14 +6,14 @@ import Switch from '@material-ui/core/Switch';
 import {Link} from 'react-router-dom';
 
 export default function Login (props) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   useEffect(() => {
     const json = localStorage.getItem("site-dark-mode");
     const currentMode = JSON.parse(json);
     if (currentMode) {
-      setDarkMode(true);
-    } else {
       setDarkMode(false);
+    } else {
+      setDarkMode(true);
     }
   }, []);
   
@@ -37,7 +37,7 @@ export default function Login (props) {
 	            <span className="icon-bar"></span>
 	            <span className="icon-bar"></span>
 	            </button>
-	            <Link to="/" className="navbar-brand"><b>RiskDice.com</b></Link>
+	            <Link to="/" className="navbar-brand"><b>Risk.com</b></Link>
 	        </div>
 	        <div className="navbar-collapse collapse" id="navbar">
 	            <ul className="nav navbar-nav navbar-right">
