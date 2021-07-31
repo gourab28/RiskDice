@@ -8,7 +8,7 @@ const Login = () => {
   const [user, setUser] = useState();
   const [error, setError] = useState("");
   const [reg, setReg] = useState();
-let history = useHistory();
+  let history = useHistory();
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");

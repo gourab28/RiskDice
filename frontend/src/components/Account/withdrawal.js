@@ -164,8 +164,8 @@ useEffect(() => {
   )
   } return (
     <Fragment>
-      <div class="row text-center">
-        <h5>Loading ....</h5>
+      <div className="row text-center">
+        <div className="line-2"></div>
       </div>
     </Fragment>
     )
