@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import axios from "axios";
 import Tippy from '@tippy.js/react';
 import mathSum from 'math-sum';
+import HTable from './table';
 
 export default function PlayGame (props) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,12 +32,13 @@ export default function PlayGame (props) {
         .then(response => setBalupdate(response.data.balance));
 },) */}
 useEffect(() => {
-    // POST request using axios inside useEffect React hook
+    const interval = setInterval(() => {
     const userd = { "userID": data.userID, "password": data.password };
     axios.post('http://localhost:5000/api/login', userd)
         .then(response => setBaldata(response.data));
-    // console.log(baldata);
-  },);
+    }, 5000);
+    return () => clearInterval(interval);
+  },[]);
   /// Load
 useEffect(() => {
   getMaxwin();
@@ -332,43 +334,7 @@ const maxBet = () => {
             </ul>
           </div>
         </div>
-        <div className="panel panel-default">
-          <table className="table table-bordered table-condensed text-center">
-            <thead>
-              <tr>
-                <th className="active text-center"><b>BET ID</b></th>
-                <th className="active text-center"><b>When</b></th>
-                <th className="active col-sm-1 text-center"><b>Lucky</b></th>
-                {/*<th className="active col-sm-1 text-center"><b>Target</b></th> */}
-                <th className="active col-sm-2 text-center"><b>Bet</b></th>
-                <th className="active col-sm-1 text-center"><b>Multiplier</b></th>
-                
-              </tr>
-            </thead>
-            <tbody id="history">
-           {sortData.slice().reverse().map((value, index) => {
-           
-        return(
-            <tr>
-              <th 
-              style={{textAlign: 'center'}}
-              className="betid">{value.betID.substring(20)}</th>
-              <td>{value.betTime}</td>
-              <td>{value.betLucky === true ? (
-              <p><b className="text-success">Win</b></p> ) : (
-                <p><b className="text-danger"> Lose </b></p>
-                     )}</td>
-              <td><Tippy content={value.betAmount}>
-              <a>{getNumber(value.betAmount).replace("0.00 undefined", (value.betAmount)).replace("undefined","")}</a>
-             </Tippy></td>
-              <td>{value.multiplier}</td>
-              
-            </tr>
-             )
-         })}
-            </tbody>
-          </table>
-        </div>
+       <HTable />
     {/* <iframe scrolling="no" frameBorder="0" src="/play.html"  style={{ width: '100%', height: '130vh',  overflow: 'hidden'}}></iframe> */}
 
     </Fragment>
