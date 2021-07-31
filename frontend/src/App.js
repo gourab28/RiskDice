@@ -9,6 +9,7 @@ import {
 import './App.css';
 import './dark.css';
 import './assets/css/toolkit.css';
+import './assets/css/loading.css';
 import './assets/css/application.css';
 // Layout Components
 import Navbar from './components/Layout/navigation'

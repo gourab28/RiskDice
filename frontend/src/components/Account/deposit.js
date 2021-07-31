@@ -56,7 +56,7 @@ export default function Account (props) {
 	        <div className="row mtm mbl">
 	            <div className="col-md-6 col-md-offset-3"> 
 					<ul className="list-group mbs">
-			            <li className="list-group-item"><b>Depsit Address:</b><span className="wordbrk"> {data.account_address}</span> <Clipboard className="clipb" data-clipboard-text={data.account_address}><i class="far fa-clipboard"></i></Clipboard></li>
+			            <li className="list-group-item"><b>Depsit Address:</b><span className="wordbrk"> {data.account_address}</span> <Clipboard className="clipb" data-clipboard-text={data.account_address}><i className="far fa-clipboard"></i></Clipboard></li>
 
 			        </ul>
 	            </div>
@@ -81,8 +81,8 @@ export default function Account (props) {
   return (
     <>
     <Fragment>
-      <div class="row text-center">
-        <h5>Loading ....</h5>
+      <div className="row text-center">
+        <div className="line-2"></div>
       </div>
     </Fragment>
     </>
