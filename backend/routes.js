@@ -7,6 +7,7 @@ const {
     authBal,
     verifyBet,
     getStats,
+    getUserBalance
 } = require("./controller");
 
 // creating a router for the server.
@@ -20,6 +21,7 @@ appRouter.route("/chkBal").patch(authBal);
 appRouter.route("/verifyBet").post(verifyBet);
 appRouter.route("/makeBet").post(betRequest);
 appRouter.route("/withdraw").post(withdrawRequest);
+appRouter.route("/balance").get(getUserBalance);
 
 module.exports = {
     appRouter,

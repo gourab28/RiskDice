@@ -92,6 +92,32 @@ async function authBal(req, res) {
     }
 }
 
+async function getUserBalance(req, res) {
+    const { userID, password } = req.body;
+    const user = await User.findById(userID);
+    if (user) {
+        if (user.password === password) {
+            res.status(200);
+            res.json({
+                userID: user._id,
+                account_address: user.account_address,
+                password: password,
+                balance: user.balance,
+                withdrawal: user.withdrawal_requests,
+                betHistory: user.new_history,
+                bet_proceeds: user.bet_proceeds,
+                total_wa: user.bet_wagered,
+            });
+        } else {
+            res.status(400);
+            res.send("Invalid UserID and password.");
+        }
+    } else {
+        res.status(404);
+        res.send("User not found");
+    }
+}
+
 // for authenticating user and logging in.
 async function authUser(req, res) {
     const { userID, password } = req.body;
@@ -239,4 +265,5 @@ module.exports = {
     authBal,
     verifyBet,
     getStats,
+    getUserBalance
 };
