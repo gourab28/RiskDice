@@ -9,11 +9,11 @@ export default function Home (props) {
   return (
     <Fragment>
     <Helmet>
-      <title>RiskDice.Com</title>
+      <title>RISK DICE</title>
     </Helmet>
 <div className="panel panel-default mtl">
 	<div className="panel-body">
-		<center><h1>The Next Generation of Gambling</h1></center>
+		<center><h1>The Next Generation of $RISK Taking</h1></center>
 		<div className="row mtl">
 			<div className="col-md-6 col-md-offset-1">
 				<ul className="list-group mtl">

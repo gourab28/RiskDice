@@ -35,7 +35,7 @@
   max-height: inherit;
 }
 .app-navbar .navbar-collapse:after {
-  height: 100vh;
+  height: 10vh;
 }
 .app-navbar .form-control {
   border-color: #1C73A5;

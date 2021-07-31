@@ -29,7 +29,6 @@ export default function Table(props) {
           <table className="table table-bordered table-condensed text-center">
             <thead>
               <tr>
-              {/*  <th className="active text-center"><b>BET ID</b></th> */}
                 <th className="active text-center"><b>When</b></th>
                 <th className="active text-center"><b>Lucky</b></th>
                 <th className="active text-center"><b>Bet</b></th>

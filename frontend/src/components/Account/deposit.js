@@ -67,7 +67,7 @@ export default function Account (props) {
 
 	        <div className="text-center">
 	            <hr className="mbl mts"/>
-	            <small><b className="text-danger">Warning:</b> Make sure you save your login credential. If you deleted your cookies and/or forgot your User ID and/or Password and since we do not require <br/> an email address, password reset is not automated. Use the contact link at the bottom of the page. You will need to prove that you own one of the <br/> originating addresses of your first deposit. </small>
+	            <small><b className="text-danger">Warning:</b> Make sure you save your login credential. If you deleted your cookies and/or forgot your User ID and/or Password and since we do not require <br/> an email address, password reset is not automated. Use the contact link at the bottom of the page. You will need to prove that you own the <br/> originating addresses of your first deposit. </small>
 	        </div>
 
 	    </div>

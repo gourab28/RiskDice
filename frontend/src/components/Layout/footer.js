@@ -19,7 +19,7 @@ const [user, setUser] = useState();
            &copy; 2021 RiskDice.com
            <span className="pull-right">
 	          <Link to="/logout">Logout</Link>
-	          <Link to="/contact">Contact</Link>
+	          <a href="mailto: contact@risk.market?subject = Lost Password">Contact</a>
            </span>
         </div>
      </div>
@@ -33,7 +33,7 @@ const [user, setUser] = useState();
            &copy; 2021 RiskDice.com
            <span className="pull-right">
 	          <Link to="/login">Login</Link>
-	          <Link to="!#">Contact</Link>
+	          <a href="mailto: contact@risk.market?subject = Lost Password">Contact</a>
            </span>
         </div>
      </div>

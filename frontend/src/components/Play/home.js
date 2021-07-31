@@ -159,10 +159,9 @@ export default function PlayGame(props) {
   }
 
   // Bet Request to api
-  const handleSubmit = async e => {
-    window.location.reload(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       refresh();
       if (betamt === "" || 0) {
         setError("Cannot place empty bets");

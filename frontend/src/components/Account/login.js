@@ -34,7 +34,7 @@ const Login = () => {
     try {
     e.preventDefault();
     const user = { "userID": username, "password": password };
-    // send the username and password to the servertry {
+    // send the username and password to the server try {
     const response = await axios.post(
       "http://localhost:5000/api/login",
       user
