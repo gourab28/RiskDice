@@ -147,18 +147,23 @@ const maxBet = () => {
   // Bet Request to api
    const handleSubmit = async e => {
     try {
-    e.preventDefault();
-    refresh();
-    const user = { "lessThanAmount": less , "userID": data.userID, "password": data.password, "betAmount": betamt };
-    // send the username and password to the servertry {
-    const response = await axios.post(
-      "http://localhost:5000/api/makeBet",
-      user
-    );
-    // set the state of the user
-   await setIsLoaded(true);
-    setBetresponse(response.data);
-    //Error Response
+      e.preventDefault();
+      refresh();
+      if(betamt === "" || 0){
+        setError("Cannot place empty bets");
+      } else {
+        setError("");
+        const user = { "lessThanAmount": less , "userID": data.userID, "password": data.password, "betAmount": betamt };
+        // send the username and password to the servertry {
+        const response = await axios.post(
+          "http://localhost:5000/api/makeBet",
+          user
+        );
+        // set the state of the user
+        await setIsLoaded(true);
+        setBetresponse(response.data);
+      }
+      //Error Response
     } catch (err) {
      setError("Insufficient account balance for making bet.");
   }
