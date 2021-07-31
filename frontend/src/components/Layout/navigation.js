@@ -1,5 +1,5 @@
 import React, {useState, Fragment, useEffect} from "react";
-import DarkModeToggle from "react-dark-mode-toggle";
+//import DarkModeToggle from "react-dark-mode-toggle";
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';

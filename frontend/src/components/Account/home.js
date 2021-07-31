@@ -38,20 +38,20 @@ export default function Account (props) {
   if (baldata) {
     return (
           <Fragment>
-            <div class="row">
-	<div class="col-sm-3">
-		<div class="list-group mtl">
-			<Link class="list-group-item active" to="/account"><b><span class="icon icon-chevron-thin-right pull-right"></span>Account Information</b></Link>
-			<Link class="list-group-item" to="/deposit"><b><span class="icon icon-chevron-thin-right pull-right"></span> Deposit</b></Link>
-			<Link class="list-group-item" to="/withdraw"><b><span class="icon icon-chevron-thin-right pull-right"></span> Withdraw</b></Link>
-			<Link class="list-group-item" to="/history"><b><span class="icon icon-chevron-thin-right pull-right"></span> Bet History</b></Link>
+            <div className="row">
+	<div className="col-sm-3">
+		<div className="list-group mtl">
+			<Link className="list-group-item active" to="/account"><b><span className="icon icon-chevron-thin-right pull-right"></span>Account Information</b></Link>
+			<Link className="list-group-item" to="/deposit"><b><span className="icon icon-chevron-thin-right pull-right"></span> Deposit</b></Link>
+			<Link className="list-group-item" to="/withdraw"><b><span className="icon icon-chevron-thin-right pull-right"></span> Withdraw</b></Link>
+			<Link className="list-group-item" to="/history"><b><span className="icon icon-chevron-thin-right pull-right"></span> Bet History</b></Link>
 		</div>
 	</div>
-	<div class="col-sm-9">
-		<div class="panel panel-default mtl">
-		<div class="panel-heading text-center"><b>Account Information</b></div>
-		<div class="panel-body ptl pbl">
-			<div class="text-center">
+	<div className="col-sm-9">
+		<div className="panel panel-default mtl">
+		<div className="panel-heading text-center"><b>Account Information</b></div>
+		<div className="panel-body ptl pbl">
+			<div className="text-center">
 	        <br/>
 	        <b>Your balance ( <b>{baldata.balance}</b> ) $RISK will be available next time you visit this website by means of a cookie.</b>
 	        <br/>
@@ -59,20 +59,20 @@ export default function Account (props) {
 	        </div>
 	        <br/>
 
-	        <div class="row mtm mbl">
-	            <div class="col-md-6 col-md-offset-3"> 
-					<ul class="list-group mbs">
-			            <li class="list-group-item"><b>User ID:</b> <span class="pull-right"><b><samp>{data.userID}</samp></b><Clipboard className="clipb pull-right user" data-clipboard-text={data.userID}><i class="far fa-clipboard"></i></Clipboard></span></li>
-			            <li class="list-group-item"><b>Password:</b> <span class="pull-right "><b><samp>{data.password} </samp></b> <Clipboard className="clipb pull-right user" data-clipboard-text={data.password}><i class="far fa-clipboard"></i></Clipboard></span></li>
+	        <div className="row mtm mbl">
+	            <div className="col-md-6 col-md-offset-3"> 
+					<ul className="list-group mbs">
+			            <li className="list-group-item"><b>User ID:</b> <span className="pull-right"><b><samp>{data.userID}</samp></b><Clipboard className="clipb pull-right user" data-clipboard-text={data.userID}><i className="far fa-clipboard"></i></Clipboard></span></li>
+			            <li className="list-group-item"><b>Password:</b> <span className="pull-right "><b><samp>{data.password} </samp></b> <Clipboard className="clipb pull-right user" data-clipboard-text={data.password}><i className="far fa-clipboard"></i></Clipboard></span></li>
 			        </ul>
 	            </div>
 	
 	        </div>
 	        <small><center><b>Note:</b> Accounts are created only after the first deposit!</center></small>
 
-	        <div class="text-center">
-	            <hr class="mbl mts"/>
-	            <small><b class="text-danger">Warning:</b> Make sure you save your login credential. If you deleted your cookies and/or forgot your User ID and/or Password and since we do not require <br/> an email address, password reset is not automated. Use the contact link at the bottom of the page. You will need to prove that you own one of the <br/> originating addresses of your first deposit. </small>
+	        <div className="text-center">
+	            <hr className="mbl mts"/>
+	            <small><b className="text-danger">Warning:</b> Make sure you save your login credential. If you deleted your cookies and/or forgot your User ID and/or Password and since we do not require <br/> an email address, password reset is not automated. Use the contact link at the bottom of the page. You will need to prove that you own one of the <br/> originating addresses of your first deposit. </small>
 	        </div>
 
 	    </div>
@@ -84,8 +84,8 @@ export default function Account (props) {
   }
   return (
     <Fragment>
-      <div class="row text-center">
-        <h5>Loading ....</h5>
+      <div className="row text-center">
+        <div className="line-2"></div>
       </div>
     </Fragment>
     )
