@@ -355,7 +355,7 @@ const maxBet = () => {
               <tr>
                 <th className="active text-center"><b>Time</b></th>
                 <th className="active text-center"><b>Win/Lose</b></th>
-                {/*<th className="active col-sm-1 text-center"><b>Winning #</b></th> */}
+                <th className="active col-sm-1 text-center"><b>Winning #</b></th>
                 <th className="active text-center"><b>Bet Amount</b></th>
                 <th className="active text-center"><b>Multiplier</b></th>
                 
@@ -363,6 +363,7 @@ const maxBet = () => {
             </thead>
             <tbody id="history">
            {betList.list.slice().reverse().map((value, index) => {
+           let winnings = value.betAmount * value.multiplier - value.betAmount;
         return(
             <tr>
             {/*  <th 
@@ -373,11 +374,16 @@ const maxBet = () => {
               <p><b className="text-success">Win</b></p> ) : (
                 <p><b className="text-danger"> Lose </b></p>
                      )}</td>
+                <td>
+                 {value.betLucky === true ? (
+              <p>{winnings.toFixed(8)}</p> ) : (
+                <p>0.00</p>
+                     )}
+                </td>
               <td><Tippy content={value.betAmount}>
               <a>{numFormatter(value.betAmount)}</a>
              </Tippy></td>
               <td>{value.multiplier}</td>
-              
             </tr>
              )
          })}
