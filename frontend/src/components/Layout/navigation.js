@@ -49,7 +49,7 @@ export default function Login (props) {
 	                <li><Link to="/faq">FAQ</Link></li>
 	                <li><Link to="/verification">Verification</Link></li>
 	                <li>
-	                <Switch checked={darkMode} onClick={() => setDarkMode(!darkMode)} name="checkedA" />
+	                <Switch className="dark-switch" checked={darkMode} onClick={() => setDarkMode(!darkMode)} name="checkedA" />
 	               {/* <DarkModeToggle
 	                 onChange={setDarkMode}
 	                 className="dark-btn"
