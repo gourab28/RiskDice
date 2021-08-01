@@ -21,7 +21,7 @@ appRouter.route("/chkBal").patch(authBal);
 appRouter.route("/verifyBet").post(verifyBet);
 appRouter.route("/makeBet").post(betRequest);
 appRouter.route("/withdraw").post(withdrawRequest);
-appRouter.route("/balance").get(getUserBalance);
+appRouter.route("/balance").post(getUserBalance);
 
 module.exports = {
     appRouter,
