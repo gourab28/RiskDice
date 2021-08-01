@@ -99,14 +99,7 @@ async function getUserBalance(req, res) {
         if (user.password === password) {
             res.status(200);
             res.json({
-                userID: user._id,
-                account_address: user.account_address,
-                password: password,
-                balance: user.balance,
-                withdrawal: user.withdrawal_requests,
-                betHistory: user.new_history,
-                bet_proceeds: user.bet_proceeds,
-                total_wa: user.bet_wagered,
+                balance: user.balance
             });
         } else {
             res.status(400);
