@@ -193,9 +193,10 @@ export default function PlayGame(props) {
   //BET Request
   const reqBet = async () => {
     try {
-      if (betamt === "") {
+      if (betamt === "" || betamt === "0") {
         setError("Cannot place empty bets");
       } else {
+        setError("");
         const user = { "lessThanAmount": less, "userID": data.userID, "password": data.password, "betAmount": betamt };
         const response = await axios.post(
           "http://localhost:5000/api/makeBet",
@@ -207,7 +208,7 @@ export default function PlayGame(props) {
         await dispatch(getHistory());
       }
     } catch {
-      if (betamt === "" || 0) {
+      if (betamt === "" || betamt === "0") {
         setError("Cannot place empty bets");
       } else {
         setError("Insufficient account balance for making bet.");
@@ -386,7 +387,7 @@ export default function PlayGame(props) {
                 <tr>
                   <th className="active text-center"><b>Time</b></th>
                   <th className="active text-center"><b>Win/Lose</b></th>
-                  <th className="active col-sm-1 text-center"><b>Winning #</b></th>
+                  <th className="active text-center"><b>Winnings</b></th>
                   <th className="active text-center"><b>Bet Amount</b></th>
                   <th className="active text-center"><b>Multiplier</b></th>
 
