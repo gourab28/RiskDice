@@ -86,3 +86,7 @@ td {
   width: auto;
   height: auto;
 }
+
+.dark-switch {
+  margin-top: 5px;
+}
