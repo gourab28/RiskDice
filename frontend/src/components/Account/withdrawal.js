@@ -17,7 +17,7 @@ let Udata = localStorage.getItem("user");
 useEffect(() => {
     // POST request using axios inside useEffect React hook
     const userd = { "userID": data.userID, "password": data.password };
-    axios.post('http://localhost:5000/api/login', userd)
+    axios.post('http://localhost:5000/api/balance', userd)
         .then(response => setBaldata(response.data));
     // console.log(baldata);
   },[]);
