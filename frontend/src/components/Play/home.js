@@ -64,10 +64,18 @@ useEffect(() => {
     }else if(num > 1000000){
         return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
     }else if(num < 900){
-        return num; // if value < 1000, nothing to do
+        return num // if value < 1000, nothing to do
     }
 }
-
+function winFormatter(num) {
+    if(num > 999 && num < 1000000){
+        return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million 
+    }else if(num > 1000000){
+        return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
+    }else if(num < 900){
+        return num.toFixed(8) // if value < 1000, nothing to do
+    }
+}
 function formatNUM (n)  {
     let dotPos, i, len, num, _i;
     num = (n / 1e8).toFixed(7);
@@ -376,7 +384,7 @@ const maxBet = () => {
                      )}</td>
                 <td>
                  {value.betLucky === true ? (
-              <p>{winnings.toFixed(8)}</p> ) : (
+              <p>{winFormatter(winnings)}</p> ) : (
                 <p>0.00</p>
                      )}
                 </td>
