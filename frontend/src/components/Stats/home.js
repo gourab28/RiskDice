@@ -1,11 +1,9 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import axios from 'axios';
-import millify from "millify";
 
 export default function Stats (props) {
  
  const [stats, setStats] = useState([]);
- const [total, setTotal] = useState([]);
  const [isLoaded, setIsLoaded] = useState(false);
   
  useEffect(() => {

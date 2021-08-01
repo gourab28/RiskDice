@@ -1,12 +1,13 @@
 import React, {useState, Fragment, useEffect} from "react";
 //import DarkModeToggle from "react-dark-mode-toggle";
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 import Switch from '@material-ui/core/Switch';
 import {Link} from 'react-router-dom';
 
 export default function Login (props) {
   const [darkMode, setDarkMode] = useState(true);
+  const [navExpanded, setnavExpanded] = useState(false);
+  
   useEffect(() => {
     const json = localStorage.getItem("site-dark-mode");
     const currentMode = JSON.parse(json);
@@ -26,6 +27,7 @@ export default function Login (props) {
     const json = JSON.stringify(darkMode);
     localStorage.setItem("site-dark-mode", json);
   }, [darkMode]);
+  
   return (
     <Fragment>
 	<nav className="navbar navbar-default app-navbar">
@@ -40,7 +42,7 @@ export default function Login (props) {
 	            <Link to="/" className="navbar-brand"><b>Risk.com</b></Link>
 	        </div>
 	        <div className="navbar-collapse collapse" id="navbar">
-	            <ul className="nav navbar-nav navbar-right">
+	            <ul aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" className="nav navbar-nav navbar-right">
 	                <li>
 	                <Link to="/play">Play</Link></li>
 	                <li><Link to="/account">Account</Link></li>
