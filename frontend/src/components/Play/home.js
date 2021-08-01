@@ -55,15 +55,17 @@ export default function PlayGame(props) {
   });
 
   useEffect(() => {
-    dispatch(getHistory())
-    get_New();
     getMaxwin();
     odds();
     multiplier();
     maxBet();
     lessVal();
-  }, []);
-
+  },);
+ 
+ useEffect(() => {
+   dispatch(getHistory())
+   get_New();
+ },[]);
   const get_New = async () => {
     try {
       const userd = { "userID": data.userID, "password": data.password };
@@ -76,7 +78,7 @@ export default function PlayGame(props) {
   const refresh = async () => {
     // POST request using axios inside useEffect React hook
     const userd = { "userID": data.userID, "password": data.password };
-    axios.post('http://localhost:5000/api/login', userd)
+    axios.post('http://localhost:5000/api/balance', userd)
       .then(response => setBaldata(response.data));
     // console.log(baldata);
   }
@@ -386,7 +388,7 @@ export default function PlayGame(props) {
                 <tr>
                   <th className="active text-center"><b>Time</b></th>
                   <th className="active text-center"><b>Win/Lose</b></th>
-                  <th className="active col-sm-1 text-center"><b>Winning #</b></th>
+                {/*  <th className="active col-sm-1 text-center"><b>Winning #</b></th> */}
                   <th className="active text-center"><b>Bet Amount</b></th>
                   <th className="active text-center"><b>Multiplier</b></th>
 
@@ -405,12 +407,12 @@ export default function PlayGame(props) {
                         <p><b className="text-success">Win</b></p>) : (
                         <p><b className="text-danger"> Lose </b></p>
                       )}</td>
-                      <td>
+                     {/* <td>
                         {value.betLucky === true ? (
                           <p>{winFormatter(winnings)}</p>) : (
                           <p>0.00</p>
                         )}
-                      </td>
+                      </td> */}
                       <td><Tippy content={value.betAmount}>
                         <a>{numFormatter(value.betAmount)}</a>
                       </Tippy></td>

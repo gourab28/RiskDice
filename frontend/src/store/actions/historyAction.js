@@ -6,7 +6,7 @@ export const getHistory = () => async dispatch => {
   
     try{
       const userd = await { "userID": REMEMBER_DATA.userID, "password": REMEMBER_DATA.password };
-        const res = await axios.post(`http://localhost:5000/api/login`, userd)
+        const res = await axios.post(`http://localhost:5000/api/balance`, userd)
         dispatch( {
             type: BET_HISTORY,
             payload: res.data.betHistory

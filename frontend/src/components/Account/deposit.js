@@ -11,19 +11,21 @@ export default function Account (props) {
   //const [copy, setCopy] = useState("");
   
   useEffect(() => {
-    // POST request using axios inside useEffect React hook
-    const userd = { "userID": data.userID, "password": data.password };
-    axios.post('http://localhost:5000/api/login', userd)
-        .then(response => setBaldata(response.data));
-    // console.log(baldata);
+    get_Balance();
   },[]);
-  //console.log(data);
-  const refresh = async () => {
-    const userd = { "userID": data.userID, "password": data.password };
+  
+  const get_Balance = async() => {
     try {
-     const response = await axios.patch('http://localhost:5000/api/chkBal', userd);
-     await alert("Balance Update Successfully");
-     await window.location.reload();
+      const userd = { "userID": data.userID, "password": data.password };
+     const response = await axios.post('http://localhost:5000/api/balance', userd)
+     setBaldata(response.data);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  const refresh = async () => {
+    try {
+     get_Balance();
     } catch (e) {
       alert("something wrong");
     }
