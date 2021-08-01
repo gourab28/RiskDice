@@ -1,4 +1,4 @@
-import React,{Fragment , useState, useEffect} from 'react';
+import React,{Fragment} from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -18,7 +18,7 @@ import Footer from './components/Layout/footer';
 import Home from './components/HomePage/home';
 import Login from './components/Account/login';
 import Signup from './components/Account/signup';
-import Register from './components/Account/register';
+//import Register from './components/Account/register';
 import History from './components/Account/history';
 import Logout from './components/Account/logout';
 import Verification from './components/Account/verification';
@@ -28,7 +28,7 @@ import Withdrawal from './components/Account/withdrawal';
 import Play from './components/Play/home';
 
 import Faq from './components/FAQ/home';
-import Stats from './components/Stats/home';
+//import Stats from './components/Stats/home';
 //Login Protected
 import Protected from './components/Protected';
 
@@ -53,7 +53,7 @@ function App() {
             <Protected path="/withdraw" component={Withdrawal} />
             <Protected path="/play" component={Play} />
             <Route path="/faq" component={Faq} />
-            <Protected path="/stats" component={Stats} />
+           {/* <Protected path="/stats" component={Stats} /> */}
         </Switch>
         <Footer />
       </Router>
