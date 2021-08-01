@@ -64,10 +64,18 @@ useEffect(() => {
     }else if(num > 1000000){
         return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
     }else if(num < 900){
-        return num; // if value < 1000, nothing to do
+        return num // if value < 1000, nothing to do
     }
 }
-
+function winFormatter(num) {
+    if(num > 999 && num < 1000000){
+        return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million 
+    }else if(num > 1000000){
+        return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
+    }else if(num < 900){
+        return num.toFixed(8) // if value < 1000, nothing to do
+    }
+}
 function formatNUM (n)  {
     let dotPos, i, len, num, _i;
     num = (n / 1e8).toFixed(7);
@@ -355,7 +363,7 @@ const maxBet = () => {
               <tr>
                 <th className="active text-center"><b>Time</b></th>
                 <th className="active text-center"><b>Win/Lose</b></th>
-                {/*<th className="active col-sm-1 text-center"><b>Winning #</b></th> */}
+                <th className="active col-sm-1 text-center"><b>Winning #</b></th>
                 <th className="active text-center"><b>Bet Amount</b></th>
                 <th className="active text-center"><b>Multiplier</b></th>
                 
@@ -363,6 +371,7 @@ const maxBet = () => {
             </thead>
             <tbody id="history">
            {betList.list.slice().reverse().map((value, index) => {
+           let winnings = value.betAmount * value.multiplier - value.betAmount;
         return(
             <tr>
             {/*  <th 
@@ -373,11 +382,16 @@ const maxBet = () => {
               <p><b className="text-success">Win</b></p> ) : (
                 <p><b className="text-danger"> Lose </b></p>
                      )}</td>
+                <td>
+                 {value.betLucky === true ? (
+              <p>{winFormatter(winnings)}</p> ) : (
+                <p>0.00</p>
+                     )}
+                </td>
               <td><Tippy content={value.betAmount}>
               <a>{numFormatter(value.betAmount)}</a>
              </Tippy></td>
               <td>{value.multiplier}</td>
-              
             </tr>
              )
          })}
